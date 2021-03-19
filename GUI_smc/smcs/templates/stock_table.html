@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block body %}
+<body style="background-color: rgb(252, 213, 142); color: rgb(19, 18, 18);">
+  
+ 
+  <table class="table">
+  <thead>
+    <tr rowspan='6'>
+      <th></th>
+      <th></th>
+      <th>
+        <center>Stock Details - Table</center></th></tr>
+    <tr><th>Product Name</th>
+    <th>Category</th>
+    <th>Inner Quantity </th>
+    <th>Outer Quantity</th>
+    <th>Update</th>
+    <th>Delete</th></tr>
+  </thead>
+  <tbody>
+    {% for a in db %}
+    <tr>
+      <td>{{a.product_name}}</td>
+      <td>{{a.category}}</td>
+      <td>{{a.inner_quantity}}</td>
+      <td>{{a.outer_quantity}}</td>
+      <td><a href="update/{{a.id}}" class="btn btn-info">Update</a></td>
+      <td><a href="delete/{{a.id}}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table><br>
+
+  
+  <button class="btn-lg btn-secondary"><a href="{% url 'update_stock' %}"  style="color: white;">Back</a></button>
+
+</body>
+{% endblock %}
